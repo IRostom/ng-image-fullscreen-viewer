@@ -7,27 +7,24 @@
             </div>
             <div class="lightbox-image-main"
                 [ngStyle]="{'margin-left': marginLeft + 'px', 'grid-template-columns': 'repeat('+images.length+',1fr)', 'transition': effectStyle}">
-                <div class="lightbox-image"
-                    [ngStyle]="{'width': popupWidth + 'px'}"
-                    *ngFor="let img of images; let i = index"
-                    [attr.id]="'ng-lightbox-image-' + i"
-                    (touchstart)="swipeLightboxImg($event, 'start')"
-                    (touchend)="swipeLightboxImg($event, 'end')"
+                <div class="lightbox-image" [ngStyle]="{'width': popupWidth + 'px'}"
+                    *ngFor="let img of images; let i = index" [attr.id]="'ng-lightbox-image-' + i"
+                    (touchstart)="swipeLightboxImg($event, 'start')" (touchend)="swipeLightboxImg($event, 'end')"
                     #lightboxImageDiv>
-                    <custom-img
-                        [imageUrl]="img.image || img.video"
-                        [isVideo]="!!(img.posterImage || img.video)"
-                        [videoAutoPlay]="videoAutoPlay"
-                        [showVideoControls]="showVideoControls ? 1 : 0"
-                        [alt]="img.alt || img.title || ''"
-                        [title]="img.title || img.alt || ''"
-                        [direction]="direction">
+                    <custom-img [imageUrl]="img.image || img.video" [isVideo]="!!(img.posterImage || img.video)"
+                        [videoAutoPlay]="videoAutoPlay" [showVideoControls]="showVideoControls ? 1 : 0"
+                        [alt]="img.alt || img.title || ''" [title]="img.title || img.alt || ''" [direction]="direction">
                     </custom-img>
                 </div>
             </div>
             <div [dir]="direction" [ngClass]="{'show': title, 'hide': !title}" class="caption">{{ title }}</div>
-            <a *ngIf="images.length > 1" [ngClass]="{'disable': lightboxPrevDisable}" class="prev icons prev-icon" (click)="prevImageLightbox()">&lsaquo;</a>
-            <a *ngIf="images.length > 1" [ngClass]="{'disable': lightboxNextDisable}" class="next icons next-icon" (click)="nextImageLightbox()">&rsaquo;</a>
+            <div [dir]="direction" [ngClass]="{'show': title, 'hide': !title}" class="caption caption-secondary">{{
+                titleSecondary }}
+            </div>
+            <a *ngIf="images.length > 1" [ngClass]="{'disable': lightboxPrevDisable}" class="prev icons prev-icon"
+                (click)="prevImageLightbox()">&lsaquo;</a>
+            <a *ngIf="images.length > 1" [ngClass]="{'disable': lightboxNextDisable}" class="next icons next-icon"
+                (click)="nextImageLightbox()">&rsaquo;</a>
         </div>
     </div>
     <div *ngIf="paginationShow" class="popup-pagination">{{currentImageIndex + 1}} of {{totalImages}}</div>
