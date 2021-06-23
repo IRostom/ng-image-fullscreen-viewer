@@ -39,6 +39,7 @@ export class NgImageFullscreenViewComponent implements OnDestroy {
   speed: number = 1; // default speed in second
   title: string = '';
   titleSecondary: string = '';
+  titleTritary: string = '';
   currentImageIndex: number = 0;
 
   // for swipe event
