@@ -199,6 +199,8 @@ export class NgImageFullscreenViewComponent implements OnDestroy {
       this.title = this.images[this.currentImageIndex]['title'] || '';
       this.titleSecondary =
         this.images[this.currentImageIndex]['titleSecondary'] || '';
+      this.titleTritary =
+        this.images[this.currentImageIndex]['titleTritary'] || '';
       this.totalImages = this.images.length;
       for (const iframeI in this.document.getElementsByTagName('iframe')) {
         if (
